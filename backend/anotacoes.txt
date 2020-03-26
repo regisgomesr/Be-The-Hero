@@ -1,0 +1,57 @@
+/*
+
+Rota / Recurso
+
+
+--------------------------
+
+
+Métodos HTTP:
+
+GET: Buscar/Listar uma informação do back-end
+POST: Criar uma informação no back-end
+PUT: Alterar uma informação no back-end
+DELETE: Deletar uma informação no back-end
+
+--------------------------
+
+
+Tipos de Parametros:
+
+Query Params: Parârametros nomeados enviados na rota após "?" ( Filtros, Paginação ) 
+ex: /users?name=Regis
+
+Route Params: Parâmetros utilizados para identificar recursos
+ex: /users/:id
+
+Request Body: Corpo da requisição, utilizado para criar ou alterar recursos
+ex: 
+
+app.post('/users', (request, response) => {
+    const body = request.body;
+
+    console.log(body);
+
+    return response.json({
+        evento: 'Semana OmniStack 11.0 Be The Hero',
+        aluno: 'Theo Ribeiro'
+    })
+})
+
+app.listen(3333)
+
+--------------------------
+
+SQL: MySQL, SQLite, PostgreSQL, Oracle, Microsoft SQL Server
+
+NoSQL: MondoDB, CouchDB, etc
+
+
+--------------------------
+
+
+Driver: SELECT * FROM users
+
+Query Builder: table('users').select('*').where()
+
+*/
