@@ -1,11 +1,21 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+
+import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { View, FlatList, Image, Text, TouchableOpacity } from 'react-native';
 
 import logoImg from '../../assets/logo.png';
 
 import styles from './styles';
 
 export default function Incidents() {
+
+    const navigation = useNavigation();
+
+    function navigateToDetail() {
+        navigation.navigate('Detail');
+    }
+
     return(
         <View style={ styles.container } >
 
@@ -18,6 +28,38 @@ export default function Incidents() {
 
             <Text style={styles.title}>Bem-Vindo!</Text>
             <Text style={styles.description}>Escolha um dos casos abaixo e salve o dia.</Text>
+
+            <FlatList style={styles.incidentList} 
+             data={[1, 2, 3, 4, 5]}
+             keyExtractor={ incident => String(incident) }
+             showsVerticalScrollIndicator={false}
+             renderItem={() => (
+
+                <View style={styles.incident}>
+
+                    <Text style={styles.incidentPropery}>ONG:</Text>
+                    <Text style={styles.incidentValue}>RP ONG</Text>
+
+                    <Text style={styles.incidentPropery}>CASO:</Text>
+                    <Text style={styles.incidentValue}>Cadelinha atropelada</Text>
+
+                    <Text style={styles.incidentPropery}>VALOR:</Text>
+                    <Text style={styles.incidentValue}>R$ 120,00</Text>
+
+                    <TouchableOpacity 
+                        style={styles.detailsButton} 
+                        onPress={navigateToDetail}
+                    >
+                        <Text style={styles.detailsButtonText}>Ver mais detalhes</Text>
+                        <Feather name='arrow-right' size={16} color='#E02041' />
+                        
+                    </TouchableOpacity>
+                
+                </View>
+
+             )}
+            
+            />
 
         </View>
     );
